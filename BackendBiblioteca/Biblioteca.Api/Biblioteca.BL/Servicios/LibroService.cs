@@ -3,14 +3,13 @@ using Biblioteca.BL.Interfaces;
 using Biblioteca.DAL.Repositorios.Interfaces;
 using Biblioteca.Entitites.DTOs;
 using Biblioteca.Entitites.Entidades;
+using Biblioteca.Entitites.Constantes;
 
 namespace Biblioteca.BL.Services
 {
     public class LibroService : ILibroService
     {
         private readonly ILibroRepositorio _repo;
-
-        private const int MAX_LIBROS = 10;
 
         public LibroService(ILibroRepositorio repo)
         {
@@ -26,7 +25,7 @@ namespace Biblioteca.BL.Services
             // Regla 2: Controlar máximo permitido
             var totalLibros = await _repo.CountAsync();
 
-            if (totalLibros >= MAX_LIBROS)
+            if (totalLibros >= Parametros.MAX_LIBROS)
                 throw new MaximoLibrosException();
 
             var libro = new Libros

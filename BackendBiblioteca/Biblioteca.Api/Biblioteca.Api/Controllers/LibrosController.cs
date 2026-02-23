@@ -21,6 +21,7 @@ namespace Biblioteca.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Registrar([FromBody] LibroDto dto)
         {
+
             await _service.RegistrarLibroAsync(dto);
             return StatusCode(201, "Libro registrado correctamente");
         }
