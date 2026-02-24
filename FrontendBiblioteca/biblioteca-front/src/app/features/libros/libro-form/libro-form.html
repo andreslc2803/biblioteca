@@ -1,0 +1,36 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="libro-form">
+  <h2>Registrar Libro</h2>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Título</mat-label>
+      <input matInput formControlName="titulo" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Año</mat-label>
+      <input matInput type="number" formControlName="anio" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Género</mat-label>
+      <input matInput formControlName="genero" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Número de páginas</mat-label>
+      <input matInput type="number" formControlName="numeroPaginas" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Autor</mat-label>
+      <mat-select formControlName="autorId">
+        <mat-option *ngFor="let autor of autores" [value]="autor.id">
+          {{ autor.nombreCompleto }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="form-button">
+    <button mat-raised-button color="primary" type="submit">Guardar</button>
+  </div>
+</form>

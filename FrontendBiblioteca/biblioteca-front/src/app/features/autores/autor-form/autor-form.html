@@ -1,0 +1,29 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="autor-form">
+  <h2>Nuevo Autor</h2>
+  <div class="form-row">
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Nombre Completo</mat-label>
+      <input matInput formControlName="nombreCompleto" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput type="date" formControlName="fechaNacimiento" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Ciudad de Procedencia</mat-label>
+      <input matInput formControlName="ciudadProcedencia" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="correoElectronico" />
+    </mat-form-field>
+  </div>
+  <div class="form-row">
+    <div class="form-actions">
+      <button mat-raised-button color="primary" type="submit">Guardar</button>
+    </div>
+  </div>
+</form>

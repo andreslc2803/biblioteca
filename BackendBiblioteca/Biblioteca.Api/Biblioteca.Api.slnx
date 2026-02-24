@@ -1,3 +1,6 @@
 <Solution>
   <Project Path="Biblioteca.Api/Biblioteca.Api.csproj" />
+  <Project Path="Biblioteca.BL/Biblioteca.BL.csproj" Id="5b51f01e-c24e-47f7-95cf-e90531347e92" />
+  <Project Path="Biblioteca.DAL/Biblioteca.DAL.csproj" Id="f9aca35a-2535-428f-8756-e7ec42b0f56a" />
+  <Project Path="Biblioteca.Entitites/Biblioteca.Entitites.csproj" Id="8a022e05-9941-473d-822a-db770d4e6b0d" />
 </Solution>
