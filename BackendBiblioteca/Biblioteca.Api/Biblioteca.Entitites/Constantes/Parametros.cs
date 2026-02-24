@@ -8,6 +8,6 @@ namespace Biblioteca.Entitites.Constantes
 {
     public static class Parametros
     {
-        public const int MAX_LIBROS = 10;
+        public const int MAX_LIBROS = 20;
     }
 }

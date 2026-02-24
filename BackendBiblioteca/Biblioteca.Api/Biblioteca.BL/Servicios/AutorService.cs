@@ -1,4 +1,5 @@
-﻿using Biblioteca.BL.Interfaces;
+﻿using Biblioteca.BL.Excepciones;
+using Biblioteca.BL.Interfaces;
 using Biblioteca.DAL.Repositorios.Interfaces;
 using Biblioteca.Entitites.DTOs;
 using Biblioteca.Entitites.Entidades;
@@ -14,10 +15,10 @@ namespace Biblioteca.BL.Services
             _repo = repo;
         }
 
-        public async Task RegistrarAutorAsync(AutorDto dto)
+        public async Task<AutorDto> RegistrarAutorAsync(AutorDto dto)
         {
             if (await _repo.ExistsByEmailAsync(dto.CorreoElectronico))
-                throw new Exception("Ya existe un autor con ese correo electrónico.");
+                throw new CorreoException();
 
             var autor = new Autores
             {
@@ -28,6 +29,10 @@ namespace Biblioteca.BL.Services
             };
 
             await _repo.AddAsync(autor);
+
+            // Retornar DTO actualizado con Id generado
+            dto.Id = autor.Id;
+            return dto;
         }
 
         public async Task<List<AutorDto>> ObtenerAutoresAsync()
@@ -36,6 +41,7 @@ namespace Biblioteca.BL.Services
 
             return autores.Select(a => new AutorDto
             {
+                Id = a.Id,
                 NombreCompleto = a.NombreCompleto,
                 FechaNacimiento = a.FechaNacimiento,
                 CiudadProcedencia = a.CiudadProcedencia,
@@ -52,6 +58,7 @@ namespace Biblioteca.BL.Services
 
             return new AutorDto
             {
+                Id = autor.Id,
                 NombreCompleto = autor.NombreCompleto,
                 FechaNacimiento = autor.FechaNacimiento,
                 CiudadProcedencia = autor.CiudadProcedencia,

@@ -22,7 +22,11 @@ namespace Biblioteca.Api.Controllers
         public async Task<IActionResult> Registrar([FromBody] AutorDto dto)
         {
             await _service.RegistrarAutorAsync(dto);
-            return StatusCode(201, "Autor registrado correctamente");
+
+            return StatusCode(201, new
+            {
+                message = "Autor registrado correctamente",
+            });
         }
 
         /// <summary>

@@ -1,4 +1,5 @@
-﻿using Biblioteca.BL.Exceptions;
+﻿using Biblioteca.BL.Excepciones;
+using Biblioteca.BL.Exceptions;
 using System.Net;
 using System.Text.Json;
 
@@ -44,6 +45,10 @@ namespace Biblioteca.Api.Middleware
                     break;
 
                 case MaximoLibrosException:
+                    statusCode = HttpStatusCode.BadRequest;
+                    break;
+
+                case CorreoException:
                     statusCode = HttpStatusCode.BadRequest;
                     break;
 
